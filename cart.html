@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - AutoParts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Navigation -->
+  <div id="nav-container"></div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Shopping Cart</h1>
+    <div id="cart-items" class="bg-white rounded-lg shadow-md p-6">
+      <p class="text-gray-500">Your cart is currently empty.</p>
+    </div>
+    <div class="flex justify-between items-center mt-6">
+      <button id="clear-cart" class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded transition duration-300">Clear Cart</button>
+      <div class="text-lg font-bold" id="total-price">Total: $0.00</div>
+    </div>
+    <div class="mt-6">
+      <a href="checkout.html" class="bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-3 px-6 rounded transition duration-300">Proceed to Checkout</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">AutoParts</h3>
+          <p>Your trusted source for quality car spare parts since 2010.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+            <li><a href="products.html" class="hover:text-yellow-400">Products</a></li>
+            <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact</h3>
+          <p><i class="fas fa-map-marker-alt mr-2"></i> 123 Auto Street, Parts City</p>
+          <p><i class="fas fa-phone mr-2"></i> (555) 123-4567</p>
+          <p><i class="fas fa-envelope mr-2"></i> info@autoparts.com</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p>&copy; 2023 AutoParts. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Load navigation
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-container').innerHTML = data;
+        loadCartItems();
+      });
+
+    function loadCartItems() {
+      const cart = JSON.parse(localStorage.getItem('autoparts_cart')) || [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      const totalPriceElement = document.getElementById('total-price');
+      cartItemsContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-gray-500">Your cart is currently empty.</p>';
+        totalPriceElement.textContent = 'Total: $0.00';
+        return;
+      }
+
+      let totalPrice = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+
+        const itemElement = document.createElement('div');
+        itemElement.className = 'flex justify-between items-center border-b py-4';
+        itemElement.innerHTML = `
+          <div>
+            <h3 class="font-semibold">${item.name}</h3>
+            <p class="text-gray-600">$${item.price.toFixed(2)} x ${item.quantity}</p>
+          </div>
+          <div class="flex items-center">
+            <span class="font-bold">$${itemTotal.toFixed(2)}</span>
+            <button class="ml-4 text-red-500 hover:text-red-600" onclick="removeFromCart('${item.id}')">Remove</button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+      });
+
+      totalPriceElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+    }
+
+    function removeFromCart(productId) {
+      const cart = JSON.parse(localStorage.getItem('autoparts_cart')) || [];
+      const updatedCart = cart.filter(item => item.id !== productId);
+      localStorage.setItem('autoparts_cart', JSON.stringify(updatedCart));
+      loadCartItems();
+    }
+
+    document.getElementById('clear-cart').addEventListener('click', () => {
+      localStorage.removeItem('autoparts_cart');
+      loadCartItems();
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
