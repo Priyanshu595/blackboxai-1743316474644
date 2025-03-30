@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - AutoParts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Navigation -->
+  <div id="nav-container"></div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Filters Sidebar -->
+      <aside class="w-full md:w-64 bg-white p-6 rounded-lg shadow-md h-fit">
+        <h2 class="text-xl font-bold mb-4">Filters</h2>
+        
+        <!-- Category Filter -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Categories</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-yellow-600 hover:text-yellow-700">All Parts</a></li>
+            <li><a href="#" class="hover:text-yellow-600">Engine Components</a></li>
+            <li><a href="#" class="hover:text-yellow-600">Brake System</a></li>
+            <li><a href="#" class="hover:text-yellow-600">Suspension</a></li>
+            <li><a href="#" class="hover:text-yellow-600">Electrical</a></li>
+            <li><a href="#" class="hover:text-yellow-600">Exhaust</a></li>
+          </ul>
+        </div>
+
+        <!-- Price Filter -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Price Range</h3>
+          <div class="flex items-center justify-between mb-2">
+            <span>$10</span>
+            <span>$500+</span>
+          </div>
+          <input type="range" min="10" max="500" value="250" class="w-full">
+        </div>
+
+        <!-- Brand Filter -->
+        <div>
+          <h3 class="font-semibold mb-2">Brands</h3>
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <input type="checkbox" id="bosch" class="mr-2">
+              <label for="bosch">Bosch</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="delphi" class="mr-2">
+              <label for="delphi">Delphi</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="denso" class="mr-2">
+              <label for="denso">Denso</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <div class="flex-1">
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-2xl font-bold">Car Spare Parts</h1>
+          <div class="flex items-center">
+            <span class="mr-2">Sort by:</span>
+            <select class="border rounded p-2">
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Most Popular</option>
+              <option>Newest</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Product Card 1 -->
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative">
+              <img src="https://images.pexels.com/photos/1638459/pexels-photo-1638459.jpeg" alt="Engine Oil Filter" class="w-full h-48 object-cover">
+              <span class="absolute top-2 right-2 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">Bestseller</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1">Premium Oil Filter</h3>
+              <p class="text-gray-600 text-sm mb-2">Fits most 4-cylinder engines</p>
+              <div class="flex items-center mb-3">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(142)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-lg">$24.99</span>
+                <button class="add-to-cart bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition duration-300"
+                  data-id="prod-001" data-name="Premium Oil Filter" data-price="24.99">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://images.pexels.com/photos/1082655/pexels-photo-1082655.jpeg" alt="Brake Pads" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1">Ceramic Brake Pads</h3>
+              <p class="text-gray-600 text-sm mb-2">Front axle set, low dust</p>
+              <div class="flex items-center mb-3">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(89)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-lg">$59.99</span>
+                <button class="add-to-cart bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition duration-300"
+                  data-id="prod-002" data-name="Ceramic Brake Pads" data-price="59.99">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://images.pexels.com/photos/1202514/pexels-photo-1202514.jpeg" alt="Shock Absorber" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1">Heavy-Duty Shock Absorber</h3>
+              <p class="text-gray-600 text-sm mb-2">Pair, for trucks and SUVs</p>
+              <div class="flex items-center mb-3">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(204)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-lg">$129.99</span>
+                <button class="add-to-cart bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition duration-300"
+                  data-id="prod-003" data-name="Heavy-Duty Shock Absorber" data-price="129.99">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://images.pexels.com/photos/1634279/pexels-photo-1634279.jpeg" alt="Spark Plugs" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1">Iridium Spark Plugs (Set of 4)</h3>
+              <p class="text-gray-600 text-sm mb-2">Longer lifespan, better ignition</p>
+              <div class="flex items-center mb-3">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(176)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-lg">$39.99</span>
+                <button class="add-to-cart bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition duration-300"
+                  data-id="prod-004" data-name="Iridium Spark Plugs (Set of 4)" data-price="39.99">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://images.pexels.com/photos/2399840/pexels-photo-2399840.jpeg" alt="Air Filter" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1">High-Flow Air Filter</h3>
+              <p class="text-gray-600 text-sm mb-2">Reusable, washable</p>
+              <div class="flex items-center mb-3">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(97)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-lg">$34.99</span>
+                <button class="add-to-cart bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition duration-300"
+                  data-id="prod-005" data-name="High-Flow Air Filter" data-price="34.99">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative">
+              <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg" alt="Headlight Bulb" class="w-full h-48 object-cover">
+              <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Sale</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1">LED Headlight Bulbs</h3>
+              <p class="text-gray-600 text-sm mb-2">6000K White, H7 fitment</p>
+              <div class="flex items-center mb-3">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(312)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div>
+                  <span class="text-gray-400 line-through mr-2">$79.99</span>
+                  <span class="font-bold text-lg text-red-500">$64.99</span>
+                </div>
+                <button class="add-to-cart bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition duration-300"
+                  data-id="prod-006" data-name="LED Headlight Bulbs" data-price="64.99">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8">
+          <nav class="inline-flex rounded-md shadow">
+            <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">Previous</a>
+            <a href="#" class="px-3 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">1</a>
+            <a href="#" class="px-3 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">2</a>
+            <a href="#" class="px-3 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+            <a href="#" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">Next</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">AutoParts</h3>
+          <p>Your trusted source for quality car spare parts since 2010.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+            <li><a href="products.html" class="hover:text-yellow-400">Products</a></li>
+            <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact</h3>
+          <p><i class="fas fa-map-marker-alt mr-2"></i> 123 Auto Street, Parts City</p>
+          <p><i class="fas fa-phone mr-2"></i> (555) 123-4567</p>
+          <p><i class="fas fa-envelope mr-2"></i> info@autoparts.com</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p>&copy; 2023 AutoParts. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Load navigation
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-container').innerHTML = data;
+      });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
